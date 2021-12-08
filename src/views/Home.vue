@@ -15,7 +15,6 @@ export default {
     HelloWorld
   },
   created() {
-    console.log('输出')
   }
 }
 </script>

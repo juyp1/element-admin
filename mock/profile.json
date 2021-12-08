@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "code": 200,
+  "data": {
+    "role": [{ "id": "2", "title": "管理员" }],
+    "_id": "61afbd406248832231775c5f",
+    "id": "612710a9ec87aa543c9c3421",
+    "username": "admin",
+    "title": "管理员",
+    "avatar": "https://img4.sycdn.imooc.com/61110c2b0001152907400741-140-140.jpg",
+    "permission": {
+      "menus": [
+        "userManage",
+        "roleList",
+        "permissionList",
+        "articleRanking",
+        "articleCreate"
+      ],
+      "points": ["importUser"]
+    }
+  },
+  "message": "获取资料成功"
+}
