@@ -7,3 +7,5 @@ export const TOKEN_TIMEOUT_VALUE = 2 * 3600 * 1000
 export const LANGUAGE = 'language'
 // 主题
 export const THEME = 'theme'
+// tags导航
+export const TAGS_NAV = 'tag_nav'

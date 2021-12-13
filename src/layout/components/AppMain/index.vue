@@ -1,10 +1,52 @@
 <template>
   <div class="app-main">
-   <router-view/>
+    <router-view />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { isTags } from '@/utils/tags'
+import { useStore } from 'vuex'
+import { generateTitle } from '@/utils/i18n'
+/**
+ *
+ */
+const getTitle = (route) => {
+  let title = ''
+  if (!route.meta) {
+    const pathArr = route.path.split('/')
+    title = pathArr[pathArr.length - 1]
+  } else {
+    title = generateTitle(route.meta.title)
+  }
+  return title
+}
+
+const store = useStore()
+const route = useRoute()
+watch(
+  route,
+  (to, from) => {
+    const { fullPath, meta, name, params, path, query } = to
+    if (!isTags) {
+      store.commit('app/setTagsNav', {
+        fullPath,
+        meta,
+        name,
+        params,
+        path,
+        query,
+        title: getTitle(to)
+      })
+    }
+  },
+  {
+    immediate: true
+  }
+)
+</script>
 
 <style lang="scss" scoped>
 .app-main {
