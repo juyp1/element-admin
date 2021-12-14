@@ -32,6 +32,11 @@ const gettters = {
   /**
    * 主题色
    */
-  mcolor: (state) => state.theme.theme
+  mcolor: (state) => state.theme.theme,
+
+  /**
+   * tags
+   */
+  tagsnav: (state) => state.app.tagsnav
 }
 export default gettters

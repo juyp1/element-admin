@@ -2,9 +2,10 @@
  * 写入缓存
  */
 export const setStorage = (key, value) => {
-  if (typeof key === 'object') {
+  if (typeof value === 'object') {
     value = JSON.stringify(value)
   }
+  console.log(value)
   window.localStorage.setItem(key, value)
 }
 /**

@@ -1,5 +1,6 @@
 import { setStorage, getStorage } from '@/utils/storage'
 import { LANGUAGE, TAGS_NAV } from '@/constant'
+
 export default {
   namespaced: true,
   state: () => ({
@@ -22,8 +23,16 @@ export default {
       })
       if (!isFind) {
         state.tagsnav.push(tags)
+        console.log('aa', state.tagsnav.length)
         setStorage(TAGS_NAV, state.tagsnav)
       }
+    },
+    /**
+     * 修改
+     */
+    changeTagsView(state, { index, tag }) {
+      state.tagsnav[index] = tag
+      setStorage(TAGS_NAV, state.tagsnav)
     }
   }
 }

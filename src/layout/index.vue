@@ -11,6 +11,8 @@
       <!--吸顶-->
       <div class="fixed-header">
         <nav-bar />
+        <!--导航标签-->
+        <tags-view></tags-view>
       </div>
       <!--内容区域-->
       <app-main></app-main>
@@ -22,6 +24,7 @@
 import {} from 'vue'
 import NavBar from './components/NavBar'
 import SideBar from './components/Sidebar/SidebarMenu'
+import TagsView from '@/components/TagsView'
 import AppMain from './components/AppMain'
 import variables from '@/styles/variables.scss'
 </script>

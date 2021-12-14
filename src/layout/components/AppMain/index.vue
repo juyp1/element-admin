@@ -9,7 +9,9 @@ import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { isTags } from '@/utils/tags'
 import { useStore } from 'vuex'
-import { generateTitle } from '@/utils/i18n'
+import { generateTitle, watchSwitchLang } from '@/utils/i18n'
+const route = useRoute()
+const store = useStore()
 /**
  *
  */
@@ -24,28 +26,50 @@ const getTitle = (route) => {
   return title
 }
 
-const store = useStore()
-const route = useRoute()
+/**
+ * 监听路由变化
+ */
 watch(
   route,
   (to, from) => {
+    console.log('to.path', to.path)
+    if (!isTags(to.path)) return
     const { fullPath, meta, name, params, path, query } = to
-    if (!isTags) {
-      store.commit('app/setTagsNav', {
-        fullPath,
-        meta,
-        name,
-        params,
-        path,
-        query,
-        title: getTitle(to)
-      })
-    }
+    console.log({
+      fullPath,
+      meta,
+      name,
+      params,
+      path,
+      query,
+      title: getTitle(to)
+    })
+    store.commit('app/setTagsNav', {
+      fullPath,
+      meta,
+      name,
+      params,
+      path,
+      query,
+      title: getTitle(to)
+    })
   },
   {
+    // 进入组件就触发
     immediate: true
   }
 )
+watchSwitchLang(() => {
+  store.getters.tagsnav.forEach((route, index) => {
+    store.commit('app/changeTagsView', {
+      index,
+      tag: {
+        ...route,
+        title: getTitle(route)
+      }
+    })
+  })
+})
 </script>
 
 <style lang="scss" scoped>
