@@ -31,6 +31,7 @@ const isActivate = (tag) => {
   return tag.path === route.path
 }
 const onCloseClick = (index) => {}
+const openMenuClick = (e, index) => {}
 </script>
 
 <style lang="scss" scoped>
