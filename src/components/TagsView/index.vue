@@ -11,6 +11,7 @@
           backgroundColor: isActivate(tag) ? $store.getters.cssVar.menuBg : '',
           borderColor: isActivate(tag) ? $store.getters.cssVar.menuBg : ''
         }"
+        @contextmenu.prevent="openMenuClick($event, index)"
       >
         {{ tag.title }}
         <i
@@ -19,6 +20,11 @@
           @click.prevent.stop="onCloseClick(index)"
         ></i>
       </router-link>
+      <context-menu
+        :index="selectIndex"
+        v-show="visible"
+        :style="menuStye"
+      ></context-menu>
     </div>
   </div>
 </template>
@@ -26,12 +32,44 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import ContextMenu from './ContextMenu.vue'
+const visible = ref(false)
+const menuStye = ref({
+  left: 0,
+  top: 0
+})
+const selectIndex = ref(0)
 const route = useRoute()
+const store = useStore()
 const isActivate = (tag) => {
   return tag.path === route.path
 }
-const onCloseClick = (index) => {}
-const openMenuClick = (e, index) => {}
+// 关闭
+const onCloseClick = (index) => {
+  store.commit('app/removeTagsView', {
+    type: 'index',
+    index
+  })
+}
+const openMenuClick = (e, index) => {
+  visible.value = true
+  const { x, y } = e
+  menuStye.value.left = `${x}px`
+  menuStye.value.top = `${y}px`
+  selectIndex.value = index
+}
+const CloseMenuClick = () => {
+  visible.value = false
+}
+watch(visible, (val) => {
+  console.log('visible', val)
+  if (val) {
+    document.body.addEventListener('click', CloseMenuClick)
+  } else {
+    document.body.removeEventListener('click', CloseMenuClick)
+  }
+})
 </script>
 
 <style lang="scss" scoped>

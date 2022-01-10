@@ -33,6 +33,28 @@ export default {
     changeTagsView(state, { index, tag }) {
       state.tagsnav[index] = tag
       setStorage(TAGS_NAV, state.tagsnav)
+    },
+    /**
+     * 移除标签
+     */
+    removeTagsView(state, payload) {
+      if (payload.type === 'index') {
+        state.tagsnav.splice(payload.index, 1)
+      } else if (payload.type === 'other') {
+        // 移除 当前位置往后的+1
+        state.tagsnav.splice(
+          payload.index + 1,
+          state.tagsnav.length - payload.index + 1
+        )
+        state.tagsnav.splice(0, payload.index)
+        // 移除当前位置之前的-1
+      } else if (payload.type === 'right') {
+        state.tagsnav.splice(
+          payload.index + 1,
+          state.tagsnav.length - payload.index + 1
+        )
+      }
+      setStorage(TAGS_NAV, state.tagsnav)
     }
   }
 }

@@ -4,10 +4,10 @@
       <el-avatar
         :size="logoHeight"
         shape="square"
-        src="https://output66.oss-cn-beijing.aliyuncs.com/img/1585477728-540c5aeec54da3c.jpg"
+        src="https://s4.ax1x.com/2022/01/08/7Pgnb9.jpg"
       />
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
-        后台通用管理模板
+        vue3.2 elementplus
       </h1>
     </div>
     <el-scrollbar>

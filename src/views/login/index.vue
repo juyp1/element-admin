@@ -45,7 +45,7 @@
         @click="onChangeSubmit"
         >{{ $t('msg.login.loginBtn') }}</el-button
       >
-      <div class="tips" v-html="$t('msg.login.desc')"></div>
+      <!-- <div class="tips" v-html="$t('msg.login.desc')"></div> -->
     </el-form>
   </div>
 </template>
@@ -110,6 +110,7 @@ $cursor: #fff;
   min-height: 100%;
   width: 100%;
   background-color: $bg;
+  background-image:url("https://imgtu.com/content/images/system/home_cover_1601010270144_8921bc.jpg");
   overflow: hidden;
 
   .login-form {
