@@ -20,6 +20,7 @@ export default {
     `
   },
   route: {
+    home: 'Home',
     profile: 'Profile',
     user: 'user',
     excelImport: 'ExcelImport',

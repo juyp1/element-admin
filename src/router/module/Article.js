@@ -1,7 +1,8 @@
-import Layout from '../layout/index.vue'
+import layout from '@/layout'
+
 export default {
   path: '/article',
-  component: Layout,
+  component: layout,
   redirect: '/article/ranking',
   name: 'articleRanking',
   meta: { title: 'article', icon: 'article' },

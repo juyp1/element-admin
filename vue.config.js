@@ -13,7 +13,7 @@ module.exports = {
       // 当地址中有/api的时候会触发代理机制
       '/api': {
         // 要代理的服务器地址  这里不用写 api
-        target: 'https://api.imooc-admin.lgdsunday.club/',
+        target: 'https://www.fastmock.site/mock/027396d4704d2961dc8b2d5ce0309cf6/element/',
         changeOrigin: true // 是否跨域
       }
     }

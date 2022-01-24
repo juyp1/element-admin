@@ -8,6 +8,7 @@
     "dev": "vue-cli-service serve"
   },
   "dependencies": {
+    "@antv/g2plot": "^2.4.7",
     "@element-plus/icons": "^0.0.11",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",

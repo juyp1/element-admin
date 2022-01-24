@@ -15,7 +15,7 @@
       >
         {{ tag.title }}
         <i
-          v-show="!isActivate(tag)"
+          v-show="!isActivate(tag) && tag.path !== '/home'"
           class="el-icon-close"
           @click.prevent.stop="onCloseClick(index)"
         ></i>
@@ -43,6 +43,7 @@ const selectIndex = ref(0)
 const route = useRoute()
 const store = useStore()
 const isActivate = (tag) => {
+  console.log('tag.path', tag.path)
   return tag.path === route.path
 }
 // 关闭
@@ -84,6 +85,9 @@ watch(visible, (val) => {
       display: inline-block;
       position: relative;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      min-width:70px;
       height: 26px;
       line-height: 26px;
       border: 1px solid #d8dce5;

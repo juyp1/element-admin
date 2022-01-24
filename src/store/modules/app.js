@@ -1,6 +1,6 @@
 import { setStorage, getStorage } from '@/utils/storage'
 import { LANGUAGE, TAGS_NAV } from '@/constant'
-
+import router from '@/router'
 export default {
   namespaced: true,
   state: () => ({
@@ -23,7 +23,6 @@ export default {
       })
       if (!isFind) {
         state.tagsnav.push(tags)
-        console.log('aa', state.tagsnav.length)
         setStorage(TAGS_NAV, state.tagsnav)
       }
     },
@@ -46,7 +45,8 @@ export default {
           payload.index + 1,
           state.tagsnav.length - payload.index + 1
         )
-        state.tagsnav.splice(0, payload.index)
+        state.tagsnav.splice(1, payload.index)
+        router.push('/home')
         // 移除当前位置之前的-1
       } else if (payload.type === 'right') {
         state.tagsnav.splice(

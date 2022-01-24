@@ -28,7 +28,7 @@ export default {
           .then((data) => {
             this.commit('user/setToken', data.token)
             setTimeStamp()
-            router.push('/')
+            router.push('/home')
             resolve(data)
           })
           .catch((err) => {

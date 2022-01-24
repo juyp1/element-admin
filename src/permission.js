@@ -13,7 +13,16 @@ router.beforeEach(async (to, from, next) => {
       next('/')
     } else {
       if (!store.getters.hasUserInfo) {
-        await store.dispatch('user/getUserInfoAction')
+        const { permission } = await store.dispatch('user/getUserInfoAction')
+        const filterRoutes = await store.dispatch(
+          'permission/filterRoutes',
+          permission.menus
+        )
+        filterRoutes.forEach((item) => {
+          router.addRoute(item)
+        })
+        // 添加完路由主动跳转
+        return next(to.path)
       }
       next()
     }

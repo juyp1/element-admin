@@ -37,6 +37,11 @@ const gettters = {
   /**
    * tags
    */
-  tagsnav: (state) => state.app.tagsnav
+  tagsnav: (state) => state.app.tagsnav,
+
+  /*
+  用户信息
+  */
+  userInfos: (state) => state.user.userInfo
 }
 export default gettters

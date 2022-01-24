@@ -19,6 +19,7 @@ export default {
     `
   },
   route: {
+    home: '首页',
     profile: '个人中心',
     user: '用户',
     excelImport: 'Excel导入',
